@@ -1,0 +1,45 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div class="result-container">
+    <h2>Prediction Results</h2>
+    <h3>Possible Condition: <strong>{{ disease }}</strong></h3>
+    
+    <div class="result-content">
+        <div class="result-section">
+            <h4>Disease Information:</h4>
+            <p>{{ description }}</p>
+        </div>
+        
+        <div id="detailed-info" style="display: none;">
+            <div class="result-section">
+                <h4>Suggested Precautions:</h4>
+                <p>{{ precautions }}</p>
+            </div>
+
+            <div class="result-section">
+                <h4>When to Consult a Doctor:</h4>
+                <p>{{ advice }}</p>
+            </div>
+        </div>
+        
+        <button id="toggle-btn" class="view-btn">View Detailed Precautions</button>
+    </div>
+    
+    <script>
+        document.getElementById('toggle-btn').addEventListener('click', function() {
+            var info = document.getElementById('detailed-info');
+            if (info.style.display === 'none') {
+                info.style.display = 'block';
+                this.textContent = 'Hide Detailed Precautions';
+            } else {
+                info.style.display = 'none';
+                this.textContent = 'View Detailed Precautions';
+            }
+        });
+    </script>
+    
+    <p class="disclaimer">
+        <strong>Disclaimer:</strong> This is a simulation based on common health patterns. Please consult a professional medical doctor for an accurate diagnosis.
+    </p>
+</div>
+{% endblock %}
